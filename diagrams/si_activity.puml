@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+if (split <= 0) is (true) then
+  :Print Error Message;
+else (false)
+    if (split >= firstPile.size) is (true) then
+      :Print Error Message;
+    else (false)
+    endif
+endif
+
+:secondPile = new linked list;
+while (i < split)
+  :card = card.next;
+endwhile
+
+:Move card from fistPile to secondPile;
+
+while (firstPile.size or secondPile.size > 0)
+  if (firstPile.size > 0) is (true) then
+    :prependCard;
+    :removeNode from firstPile;
+  endif
+  if (secondPile.size > 0) is (true) then
+    :prependCard;
+    :removeNode from secondPile;
+  endif
+endwhile
+stop
+
+@enduml

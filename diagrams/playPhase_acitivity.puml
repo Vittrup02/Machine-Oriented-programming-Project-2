@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:column_lists = P;
+:foundation_list = createLinkedList;
+:command = 0, arg = 0, buf = 0;
+while (command == Q?)
+  if (command == LD or \n command = SW or  \n command = SI or \n command = SR or \n command ==SD)  is (true) then
+    :ERROR! Command not available in the PLAY phase;
+  else (false)
+    if (command == QQ) is (true) then
+      :print "Ending Yukon..";
+      :gameRunning = false;
+    else (false)
+      if (command = Q) is (true) then
+        :OK. You are now in the STARTUP Phase;
+        else (false)
+    if (command == valid gamemove command) is (true) then
+        :gameMoves;
+      else (false)
+        :"Input not accepted";
+      endif
+
+  :winner = checkIfWinner;
+  if (winner) is (true) then
+    :"Game Won";
+    :gameRunning = false;
+  endif
+      endif
+    endif
+  endif
+
+
+endwhile
+stop
+
+@enduml

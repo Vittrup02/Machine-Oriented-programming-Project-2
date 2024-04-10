@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:loadedDeck = empty linked list;
+:deckLoaded = false;
+:gameRunning = true;
+
+while (gameRunning?)
+    :startUpPhase;
+    if (loadedDeck and gameRunning?) is (true) then
+      :playPhase;
+    endif
+endwhile
+stop
+
+@enduml

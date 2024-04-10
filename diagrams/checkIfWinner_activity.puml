@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:filledFoundations = 0;
+:int i = 0;
+while (i < 4)
+  if (foundation[i]->size = SUIT_SIZE) is (yes) then
+    :filledFoundations = filledFoundations + 1;
+  endif
+endwhile
+if (filledFoundations == 4) is (true) then
+  :return true;
+  stop
+else (false)
+  :return false;
+  stop
+endif
+
+@enduml

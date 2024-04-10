@@ -1,0 +1,30 @@
+@startuml
+
+start
+if (filename is valid) then (true)
+    :Message "OK";
+    if(filename is emtpy) then (true)
+        :fill deck with standard values;
+    endif
+    repeat
+    :lineNum = 1;
+    :read line;
+    if(checkCard) then (false)
+    if (checkCard == 1) is (true) then
+      :ERROR! Duplicate card found on lineNum;
+    else (false)
+      :ERROR! Invalid card found on lineNum;
+    endif
+    :generate empty view;
+    :delete linked list;
+    endif
+    :appendCard to deck;
+    :lineNum++;
+    repeat while (line != NULL) is (true)
+
+else (false)
+    :Message "ERROR: File does not exist";
+endif
+stop
+
+@enduml

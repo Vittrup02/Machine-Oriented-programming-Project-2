@@ -1,0 +1,8 @@
+@startuml
+rectangle "Yukon" {
+    usecase (Play Yukon) as play
+}
+
+Player -r- play : \t
+
+@enduml

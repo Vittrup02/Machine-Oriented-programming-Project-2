@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:nodeCopy = nodeToInsert;
+:nodeCopy.key = nodeToInsert.key;
+
+    if(insertBefore and list.size > 0) then (true)
+        if(previousNode.prev != NULL) then (true)
+            :nodeCopy.next = previousNode;
+            :nodeCopy.prev = previousNode.prev;
+            :previousNode.prev.next = nodeCopy;
+            :previousNode.prev = nodeCopy;
+
+        else (false)
+            :prependNode;
+            :free(nodeCopy);
+        endif
+    else (false)
+        if(list.size > 0 and previousNode.next != NULL) then (true)
+            :nodeCopy.next = previousNode;
+            :nodeCopy.prev = previousNode.next;
+            :previousNode.next.prev = nodeCopy;
+            :previousNode.next = nodeCopy;
+
+        else (false)
+            :appendNode;
+            :free(nodeCopy);
+        endif
+
+endif
+
+:list.size++;
+
+stop
+
+@enduml

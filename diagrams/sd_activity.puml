@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:filepath = ../resources/arg.txt;
+:File = open filepath;
+while (node != null)
+  :Line = card.value + card.suit;
+  :write line;
+  :node = node.next;
+endwhile
+:Close file;
+stop
+
+@enduml

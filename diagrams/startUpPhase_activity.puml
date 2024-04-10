@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:command = 0, arg = 0, buf = 0;
+
+while (command != P)
+  :buf = input;
+  :command = command from buf;
+  :arg = arg from buf;
+
+  if (command == LD) is (true) then
+    :tmpDeck = LD;
+        if (tmpDeck != NULL) is (yes) then
+          :delete loadedDeck;
+          :loadedDeck = tmpDeck;
+          :deckLoaded = true;
+          endif
+  else (false)
+    if (deckLoaded && command == SW) is (true) then
+          :showDeck;
+        else (false)
+      if (deckLoaded && command == SI) is (true) then
+        :int split;
+        if (number of inputs == 1) is (true) then
+          :split = random int;
+        else (false)
+          :split = arg;
+        endif
+
+        :result = SI;
+        if (result != NULL) is (true) then
+          :loadedDeck = result;
+          :showDeck;
+        endif
+      else (false)
+        if (deckLoaded && command == SR) is (true) then
+          :loadedDeck = SR;
+          :showDeck;
+        else (false)
+        if (deckLoaded && command == SD) is (yes) then
+          :save deck;
+        else (false)
+          if (command == QQ) is (yes) then
+            :gameRunning = false;
+          else (no)
+            :Generate error message;
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endwhile
+
+stop
+
+@enduml

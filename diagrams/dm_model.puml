@@ -1,0 +1,23 @@
+@startuml
+
+object card {
+    value
+    suit
+}
+
+object deck
+
+object column {
+    name
+}
+
+object foundation {
+    suit
+}
+
+
+card -- deck
+column -- card
+foundation -- card
+
+@enduml

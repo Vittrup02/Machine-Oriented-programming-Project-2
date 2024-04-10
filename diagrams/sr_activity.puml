@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Create new linked list;
+while(unshuffled->node != null)
+:placement = random int;
+
+:shuffledNode = shuffledPile.head;
+while(i < placement)
+    :shuffledNode = shuffledNode.next;
+endwhile
+
+:before = random int ]0:1[;
+:insertNode;
+
+:node = node.next;
+endwhile
+
+stop
+
+@enduml
